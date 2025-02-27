@@ -7,11 +7,8 @@ body {
 .advertisement {
     width: 100px;
     height: 150px;
-    border-color: black;
-    border-width: 2px;
-    border-style: solid;
     background-color: gray;
-    color: white;
+    color: black;
     position: absolute;
     top: 10px;
     left: 10px;
