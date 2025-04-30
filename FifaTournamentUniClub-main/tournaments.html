@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
     <title>Tournaments - University FIFA Club</title>
+    <!-- Link to external CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Main header with navigation -->
     <header id="main-header">
         <div class="container">
             <div class="logo">
                 <h1>University FIFA Club</h1>
             </div>
+            <!-- Navigation bar -->
             <nav id="navbar">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -26,15 +30,19 @@
     </header>
 
     <main>
+        <!-- Upcoming tournaments section -->
         <section id="tournaments" class="section">
             <div class="container">
                 <h2 class="section-title">Upcoming Tournaments</h2>
+                <!-- Sorting controls -->
                 <div class="tournament-controls">
                     <p>Sort by:</p>
                     <button class="sort-btn" data-sort="name">Tournament Name <span class="arrow">↓</span></button>
                     <button class="sort-btn" data-sort="date">Date <span class="arrow">↓</span></button>
                 </div>
+                <!-- Tournament cards grid -->
                 <div class="tournaments-grid">
+                    <!-- Spring Championship Tournament Card -->
                     <div class="tournament-card">
                         <div class="tournament-img">
                             <img src="images/spring-championship.png" alt="Spring Championship">
@@ -48,6 +56,7 @@
                             <a href="registration.html" class="btn">Register Now</a>
                         </div>
                     </div>
+                    <!-- Summer Cup Tournament Card -->
                     <div class="tournament-card">
                         <div class="tournament-img">
                             <img src="images/spring-championship.png" alt="Summer Cup">
@@ -61,6 +70,7 @@
                             <a href="registration.html" class="btn">Register Now</a>
                         </div>
                     </div>
+                    <!-- Freshman Welcome Tournament Card -->
                     <div class="tournament-card">
                         <div class="tournament-img">
                             <img src="images/spring-championship.png" alt="Freshman Welcome Tournament">
@@ -79,10 +89,12 @@
             </div>
         </section>
 
+        <!-- Past tournaments section -->
         <section id="past-tournaments" class="section bg-light">
             <div class="container">
                 <h2 class="section-title">Past Tournaments</h2>
                 <div class="tournaments-grid">
+                    <!-- Winter Cup (Past) Tournament Card -->
                     <div class="tournament-card past">
                         <div class="tournament-img">
                             <img src="images/spring-championship.png" alt="Winter Cup">
@@ -97,6 +109,7 @@
                             <a href="standings.html" class="btn btn-secondary">View Results</a>
                         </div>
                     </div>
+                    <!-- Fall Tournament (Past) Card -->
                     <div class="tournament-card past">
                         <div class="tournament-img">
                             <img src="images/spring-championship.png" alt="Fall Tournament">
@@ -111,6 +124,7 @@
                             <a href="standings.html" class="btn btn-secondary">View Results</a>
                         </div>
                     </div>
+                    <!-- Opening Tournament (Past) Card -->
                     <div class="tournament-card past">
                         <div class="tournament-img">
                             <img src="images/spring-championship.png" alt="Opening Tournament">
@@ -129,6 +143,7 @@
             </div>
         </section>
 
+        <!-- Tournament rules section -->
         <section id="tournament-rules" class="section">
             <div class="container">
                 <h2 class="section-title">Tournament Rules</h2>
@@ -144,7 +159,6 @@
                         </ul>
                         
                         <h3>Format Details</h3>
-                        <p>Most tournaments follow a group stage format followed by knockout rounds:</p>
                         <ul class="centered-list">
                             <li>Group Stage: Round-robin format with 4 players per group</li>
                             <li>Points System: Win (3 points), Draw (1 point), Loss (0 points)</li>
@@ -157,6 +171,7 @@
         </section>
     </main>
 
+    <!-- Site footer -->
     <footer id="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -186,6 +201,7 @@
         </div>
     </footer>
     
+    <!-- JavaScript -->
     <script src="scripts.js"></script>
 </body>
 </html>
