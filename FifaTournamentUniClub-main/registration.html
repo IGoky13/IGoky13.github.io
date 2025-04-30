@@ -5,40 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration - University FIFA Club</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Author: Teoman Güven and İsmet Gökay -->
-    <style>
-        .registration-content {
-            min-height: 500px; /* Set a fixed minimum height */
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .registration-form {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .registration-form form {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        #tournament-registration .tournament-image {
-            display: none;
-        }
-        
-        #registration .registration-form,
-        #tournament-registration .registration-form {
-            flex: 2;
-            min-width: 300px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <body>
-    <!-- Header Section -->
     <header id="main-header">
         <div class="container">
             <div class="logo">
@@ -57,7 +26,6 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <section id="registration" class="section">
             <div class="container">
@@ -90,6 +58,9 @@
                                 <input type="text" id="student-id" name="student-id" required>
                             </div>
                             <button type="submit" class="btn">Register for Club</button>
+                            <div id="club-form-success" class="form-feedback success-message">
+                                Registration successful! Welcome to the University FIFA Club!
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -134,6 +105,9 @@
                                 <input type="text" id="preferred-team" name="preferred-team" required>
                             </div>
                             <button type="submit" class="btn">Register for Tournament</button>
+                            <div id="tournament-form-success" class="form-feedback success-message">
+                                Tournament registration successful! Check your email for confirmation.
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -141,7 +115,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer id="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -170,5 +143,105 @@
             </div>
         </div>
     </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $("#club-registration").validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 3
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            birthday: {
+                required: true,
+            },
+            phone: {
+                required: true,
+                minlength: 10
+            },
+            department: {
+                required: true
+            },
+            "student-id": {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+            name: {
+                required: "Please enter your full name",
+                minlength: "Name must be at least 3 characters long"
+            },
+            email: {
+                required: "Please enter your email",
+                email: "Please enter a valid email"
+            },
+            birthday: {
+                required: "Please enter your birth date",
+            },
+            phone: {
+                required: "Please enter your phone number",
+                minlength: "Phone number must be at least 10 digits"
+            },
+            department: {
+                required: "Please enter your department"
+            },
+            "student-id": {
+                required: "Please enter your student ID",
+                minlength: "Student ID must be at least 5 characters"
+            }
+        },
+        submitHandler: function(form) {
+            alert("Club registration submitted successfully!");
+            form.reset();
+        }
+    });
+    $("#tournament-registration-form").validate({
+        rules: {
+            "member-email": {
+                required: true,
+                email: true
+            },
+            tournament: {
+                required: true
+            },
+            "skill-level": {
+                required: true
+            },
+            "preferred-team": {
+                required: true
+            }
+        },
+        messages: {
+            "member-email": {
+                required: "Please enter your registered email",
+                email: "Please enter a valid email"
+            },
+            tournament: {
+                required: "Please select a tournament"
+            },
+            "skill-level": {
+                required: "Please select your skill level"
+            },
+            "preferred-team": {
+                required: "Please enter your preferred team"
+            }
+        },
+        submitHandler: function(form) {
+            alert("Tournament registration submitted successfully!");
+            form.reset();
+        }
+    });
+        });
+    </script>
+    
+    <script src="scripts.js"></script>
 </body>
 </html>
