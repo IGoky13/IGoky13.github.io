@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character set and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
     <title>Registration - University FIFA Club</title>
+    <!-- External stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <body>
+    <!-- Main header with navigation -->
     <header id="main-header">
         <div class="container">
+            <!-- Club logo/title -->
             <div class="logo">
                 <h1>University FIFA Club</h1>
             </div>
+            <!-- Main navigation menu -->
             <nav id="navbar">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -27,16 +33,20 @@
     </header>
 
     <main>
+        <!-- Club membership registration section -->
         <section id="registration" class="section">
             <div class="container">
                 <h2 class="section-title">Club Registration</h2>
                 <div class="registration-content">
+                    <!-- Registration information text -->
                     <div class="registration-info">
                         <p>Join our FIFA Club community by registering below. Membership gives you access to all tournaments, social events, and exclusive club benefits.</p>
                         <p>Already a member? Jump directly to tournament registration!</p>
                     </div>
+                    <!-- Club registration form -->
                     <div class="registration-form">
                         <form action="#" method="post" id="club-registration">
+                            <!-- Personal information fields -->
                             <div class="form-group">
                                 <label for="name">Full Name</label>
                                 <input type="text" id="name" name="name" required>
@@ -49,6 +59,7 @@
                                 <label for="phone">Phone Number</label>
                                 <input type="tel" id="phone" name="phone" required>
                             </div>
+                            <!-- University information fields -->
                             <div class="form-group">
                                 <label for="department">Department</label>
                                 <input type="text" id="department" name="department" required>
@@ -57,7 +68,9 @@
                                 <label for="student-id">Student ID</label>
                                 <input type="text" id="student-id" name="student-id" required>
                             </div>
+                            <!-- Submit button -->
                             <button type="submit" class="btn">Register for Club</button>
+                            <!-- Success message (hidden by default) -->
                             <div id="club-form-success" class="form-feedback success-message">
                                 Registration successful! Welcome to the University FIFA Club!
                             </div>
@@ -67,20 +80,25 @@
             </div>
         </section>
 
+        <!-- Tournament registration section -->
         <section id="tournament-registration" class="section bg-light">
             <div class="container">
                 <h2 class="section-title">Tournament Registration</h2>
                 <div class="registration-content">
+                    <!-- Tournament registration information -->
                     <div class="registration-info">
                         <p>Ready to showcase your FIFA skills? Register for our upcoming tournaments below!</p>
                         <p>Note: You must be a registered club member to participate in tournaments.</p>
                     </div>
+                    <!-- Tournament registration form -->
                     <div class="registration-form">
                         <form action="#" method="post" id="tournament-registration-form">
+                            <!-- Member identification -->
                             <div class="form-group">
                                 <label for="member-email">Member Email</label>
                                 <input type="email" id="member-email" name="member-email" required>
                             </div>
+                            <!-- Tournament selection -->
                             <div class="form-group">
                                 <label for="tournament">Select Tournament</label>
                                 <select id="tournament" name="tournament" required>
@@ -90,6 +108,7 @@
                                     <option value="freshman-welcome">Freshman Welcome Tournament (September 5-7)</option>
                                 </select>
                             </div>
+                            <!-- Player information -->
                             <div class="form-group">
                                 <label for="skill-level">Skill Level</label>
                                 <select id="skill-level" name="skill-level" required>
@@ -104,7 +123,9 @@
                                 <label for="preferred-team">Preferred Team</label>
                                 <input type="text" id="preferred-team" name="preferred-team" required>
                             </div>
+                            <!-- Submit button -->
                             <button type="submit" class="btn">Register for Tournament</button>
+                            <!-- Success message (hidden by default) -->
                             <div id="tournament-form-success" class="form-feedback success-message">
                                 Tournament registration successful! Check your email for confirmation.
                             </div>
@@ -115,13 +136,16 @@
         </section>
     </main>
 
+    <!-- Site footer -->
     <footer id="main-footer">
         <div class="container">
             <div class="footer-content">
+                <!-- About footer section -->
                 <div class="footer-section">
                     <h3>University FIFA Club</h3>
                     <p>Creating a community of passionate FIFA gamers since 2023.</p>
                 </div>
+                <!-- Quick links footer section -->
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
@@ -131,6 +155,7 @@
                         <li><a href="schedule.html">Schedule</a></li>
                     </ul>
                 </div>
+                <!-- Contact footer section -->
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <p>Email: fifaclub@university.edu</p>
@@ -138,17 +163,21 @@
                     <p>Location: Student Center, Room 101</p>
                 </div>
             </div>
+            <!-- Copyright information -->
             <div class="footer-bottom">
                 <p>&copy; 2025 University FIFA Club. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
     
+    <!-- jQuery and plugin scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     
+    <!-- Form validation scripts -->
     <script>
         $(document).ready(function() {
+            // Club registration form validation
             $("#club-registration").validate({
         rules: {
             name: {
@@ -203,6 +232,7 @@
             form.reset();
         }
     });
+    // Tournament registration form validation
     $("#tournament-registration-form").validate({
         rules: {
             "member-email": {
@@ -242,6 +272,7 @@
         });
     </script>
     
+    <!-- Main site JavaScript -->
     <script src="scripts.js"></script>
 </body>
 </html>

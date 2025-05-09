@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character set and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
     <title>Contact Us - University FIFA Club</title>
+    <!-- External stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <body>
+    <!-- Main header with navigation -->
     <header id="main-header">
         <div class="container">
+            <!-- Club logo/title -->
             <div class="logo">
                 <h1>University FIFA Club</h1>
             </div>
+            <!-- Main navigation menu -->
             <nav id="navbar">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -26,6 +32,7 @@
         </div>
     </header>
     <main>
+        <!-- Contact information section -->
         <section id="contact-info" class="section">
             <div class="container">
                 <h2 class="section-title">Contact Us</h2>
@@ -33,7 +40,9 @@
                     <div class="about-text">
                         <p>Have questions or suggestions? We'd love to hear from you! Use the contact details below or fill out the form to get in touch with our club management.</p>
                         
+                        <!-- Contact accordion for organized information display -->
                         <div id="contact-accordion">
+                            <!-- Primary contact information -->
                             <h3>Contact Information</h3>
                             <div>
                                 <p><strong>Email:</strong> fifaclub@university.edu</p>
@@ -41,12 +50,14 @@
                                 <p><strong>Office Hours:</strong> Monday-Friday, 10:00 AM - 4:00 PM</p>
                                 <p><strong>Location:</strong> Student Center, Room 101</p>
                             </div>
+                            <!-- Social media links -->
                             <h3>Social Media</h3>
                             <div>
                                 <p><strong>Twitter:</strong> @UniversityFIFAClub</p>
                                 <p><strong>Instagram:</strong> @university_fifa_club</p>
                                 <p><strong>Discord:</strong> discord.gg/universityFIFA</p>
                             </div>
+                            <!-- Emergency contact information -->
                             <h3>Emergency Contact</h3>
                             <div>
                                 <p><strong>Club President:</strong> Lionel Messi</p>
@@ -58,20 +69,29 @@
                 </div>
             </div>
         </section>
-
+        <section id="team-info" class="section">
+            <div class="container">
+              <h2 class="section-title">Meet the Team</h2>
+              <ul id="team-list"></ul>
+            </div>
+          </section>
+        <!-- Contact form section with tabs -->
         <section id="contact-form" class="section bg-light">
             <div class="container">
                 <h2 class="section-title">Send Us a Message</h2>
                 
+                <!-- Tab navigation system -->
                 <div id="contact-tabs">
                     <ul>
                         <li><a href="#message-tab">Send Message</a></li>
                         <li><a href="#schedule-tab">Schedule Meeting</a></li>
                         <li><a href="#faq-tab">FAQ</a></li>
                     </ul>
+                    <!-- Message form tab content -->
                     <div id="message-tab">
                         <div class="registration-form">
                             <form id="messageForm" action="#" method="post">
+                                <!-- Personal information fields -->
                                 <div class="form-group">
                                     <label for="fullName">Full Name*</label>
                                     <input type="text" id="fullName" name="fullName" required>
@@ -84,6 +104,7 @@
                                     <label for="phone">Phone Number</label>
                                     <input type="tel" id="phone" name="phone">
                                 </div>
+                                <!-- Message content -->
                                 <div class="form-group">
                                     <label for="subject">Subject*</label>
                                     <input type="text" id="subject" name="subject" required>
@@ -92,15 +113,18 @@
                                     <label for="message">Your Message*</label>
                                     <textarea id="message" name="message" rows="6" required></textarea>
                                 </div>
+                                <!-- Rating slider -->
                                 <div class="form-rating">
                                     <label for="rating">Rate your experience with our club (1-5)</label>
                                     <div id="slider-rating" class="progress-container"></div>
                                     <p>Rating: <span id="rating-value">3</span>/5</p>
                                     <input type="hidden" id="rating" name="rating" value="3">
                                 </div>
+                                <!-- Submit button -->
                                 <button type="submit" class="btn">Send Message</button>
                             </form>
                             
+                            <!-- Message submission response preview -->
                             <div id="response-preview">
                                 <h3>Thank you for your message!</h3>
                                 <p>We've received your inquiry and will respond to <span id="email-display"></span> shortly.</p>
@@ -108,6 +132,7 @@
                                 <p>Our team member will contact you within 24 hours.</p>
                             </div>
                             
+                            <!-- Form feedback messages -->
                             <div id="form-success" class="form-feedback success-message">
                                 Your message has been sent successfully! We'll get back to you soon.
                             </div>
@@ -116,9 +141,11 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Meeting scheduling tab content -->
                     <div id="schedule-tab">
                         <div class="registration-form">
                             <form id="scheduleForm" action="#" method="post">
+                                <!-- Personal information fields -->
                                 <div class="form-group">
                                     <label for="scheduleName">Full Name*</label>
                                     <input type="text" id="scheduleName" name="scheduleName" required>
@@ -127,6 +154,7 @@
                                     <label for="scheduleEmail">Email Address*</label>
                                     <input type="email" id="scheduleEmail" name="scheduleEmail" required>
                                 </div>
+                                <!-- Meeting details -->
                                 <div class="form-group">
                                     <label for="meetingDate">Preferred Meeting Date*</label>
                                     <input type="text" id="meetingDate" name="meetingDate" readonly required>
@@ -153,12 +181,15 @@
                                         <option value="General Inquiry">General Inquiry</option>
                                     </select>
                                 </div>
+                                <!-- Submit button -->
                                 <button type="submit" class="btn">Schedule Meeting</button>
                             </form>
                         </div>
                     </div>
+                    <!-- FAQ tab content -->
                     <div id="faq-tab">
                         <h3>Frequently Asked Questions</h3>
+                        <!-- FAQ accordion -->
                         <div id="faq-accordion">
                             <h3>How do I join the FIFA Club?</h3>
                             <div>
@@ -183,13 +214,16 @@
         </section>
     </main>
 
+    <!-- Site footer -->
     <footer id="main-footer">
         <div class="container">
             <div class="footer-content">
+                <!-- About footer section -->
                 <div class="footer-section">
                     <h3>University FIFA Club</h3>
                     <p>Creating a community of passionate FIFA gamers since 2023.</p>
                 </div>
+                <!-- Quick links footer section -->
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
@@ -199,6 +233,7 @@
                         <li><a href="schedule.html">Schedule</a></li>
                     </ul>
                 </div>
+                <!-- Contact footer section -->
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <p>Email: fifaclub@university.edu</p>
@@ -206,31 +241,51 @@
                     <p>Location: Student Center, Room 101</p>
                 </div>
             </div>
+            <!-- Copyright information -->
             <div class="footer-bottom">
                 <p>&copy; 2025 University FIFA Club. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- jQuery and related libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     
+    <!-- jQuery UI initialization and form validation -->
     <script>
+        $.ajax({
+           url: 'data/team.json',
+           method: 'GET',
+            dataType: 'json',
+        success: function(data) {
+          data.members.forEach(member => {
+            $("#team-list").append(`<li><strong>${member.name}</strong>: ${member.role}</li>`);
+        });
+    },
+    error: function() {
+        $("#team-list").html("<li>Error loading team information.</li>");
+    }
+});
         $(document).ready(function() {
+            // Initialize jQuery UI tabs
             $("#contact-tabs").tabs();
             
+            // Initialize contact information accordion
             $("#contact-accordion").accordion({
                 collapsible: true,
                 heightStyle: "content"
             });
             
+            // Initialize FAQ accordion with all panels initially closed
             $("#faq-accordion").accordion({
                 collapsible: true,
                 heightStyle: "content",
                 active: false
             });
 
+            // Initialize datepicker for meeting scheduling
             $("#meetingDate").datepicker({
                 minDate: 1,
                 maxDate: "+2M",
@@ -240,6 +295,7 @@
                 }
             });
             
+            // Initialize rating slider
             $("#slider-rating").slider({
                 range: "min",
                 value: 3,
@@ -251,6 +307,7 @@
                 }
             });
             
+            // Message form validation
             $("#messageForm").validate({
                 rules: {
                     fullName: "required",
@@ -283,13 +340,16 @@
                 errorElement: "span",
                 errorClass: "error",
                 submitHandler: function(form) {
+                    // Display submission confirmation with user's email and subject
                     $("#email-display").text($("#email").val());
                     $("#subject-display").text($("#subject").val());
                     
+                    // Hide form and show success message
                     $("#messageForm").hide();
                     $("#form-success").fadeIn();
                     $("#response-preview").fadeIn();
                     
+                    // Reset form after delay
                     setTimeout(function() {
                         $("#messageForm")[0].reset();
                         $("#rating-value").text("3");
@@ -300,7 +360,7 @@
                 }
             });
             
-            
+            // Schedule meeting form validation
             $("#scheduleForm").validate({
                 rules: {
                     scheduleName: "required",
@@ -325,6 +385,7 @@
                 errorElement: "span",
                 errorClass: "error",
                 submitHandler: function(form) {
+                    // Show confirmation alert and reset form
                     alert("Meeting scheduled successfully for " + $("#meetingDate").val() + " at " + $("#meetingTime").val() + ".\n\nWe will send a confirmation email to " + $("#scheduleEmail").val());
                     $(form)[0].reset();
                     return false;
@@ -333,6 +394,7 @@
         });
     </script>
     
+    <!-- Main site JavaScript -->
     <script src="scripts.js"></script>
 </body>
 </html>
