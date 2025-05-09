@@ -788,7 +788,7 @@ function displayFifaNews(newsItems, container) {
                 <h3>${item.title}</h3>
                 <p class="news-date">${formattedDate}</p>
                 <p class="news-description">${item.description}</p>
-                <a href="${item.url}" class="news-link" target="_blank">Daha Fazla Oku</a>
+                <a href="${item.url}" class="news-link" target="_blank">Read more</a>
             </div>
         `;
         
@@ -800,7 +800,7 @@ function displayFifaNews(newsItems, container) {
     // Add refresh button
     const refreshButton = document.createElement('button');
     refreshButton.classList.add('refresh-news-btn');
-    refreshButton.innerHTML = 'Haberleri Yenile';
+    refreshButton.innerHTML = 'Refresh news';
     refreshButton.addEventListener('click', function() {
         initFifaNewsSection();
     });
