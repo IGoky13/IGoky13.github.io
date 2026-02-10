@@ -3,22 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+    <title>Ismet Gökay | Portfolio</title>
     <style>
-        body {
-            background-color: #ffffff;       
+        /* --- TEMEL AYARLAR --- */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8; /* Açık Mavi */
+            --accent-hover: #0ea5e9;
         }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER / HERO --- */
+        header {
+            text-align: center;
+            padding: 60px 0 40px; /* Üst boşluk biraz azaltıldı */
+        }
+
+       
+        /* YENİ STİL: YUVARLATILMIŞ KARE */
+        .profile-img {
+            width: 170px;            /* Biraz daha büyüttük */
+            height: auto;            /* Yüksekliği otomatiğe aldık, fotoğraf sündürülmez */
+            max-height: 220px;       /* Çok uzun fotoğraflar için sınır */
+            object-fit: contain;     /* Fotoğrafın tamamını kutuya sığdırır */
+            border-radius: 12px;     /* Hafif yuvarlatılmış köşeler (Kare için bunu 0 yap) */
+            border: 3px solid var(--accent); /* Çerçeve biraz inceltildi */
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
         h1 {
-            color: #333;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .title {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            border: 1px solid var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .social-links a:hover {
+            color: var(--bg-color);
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-color);
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn:hover { background-color: var(--accent-hover); }
+
+        /* --- SECTIONS --- */
+        section { margin: 60px 0; }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            color: var(--text-main);
+        }
+
+        /* --- PROJECTS --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--accent);
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .tech-stack {
+            font-size: 0.9rem;
+            font-family: monospace;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .project-desc li {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+            color: #cbd5e1;
+        }
+
+        .project-desc li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* --- SKILLS --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            border: 1px solid #334155;
+        }
+
+        /* --- EDUCATION & CERTIFICATES --- */
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 15px;
+        }
+        .item-row:last-child { border-bottom: none; }
+        
+        .item-title { font-weight: bold; font-size: 1.1rem; }
+        .item-subtitle { color: var(--text-muted); }
+        .item-date { color: var(--accent); font-size: 0.9rem; text-align: right; }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .item-row { flex-direction: column; }
+            .item-date { text-align: left; margin-top: 5px; }
         }
     </style>
 </head>
 <body>
-    <h1>İsmet Gökay</h1>
-    <p>My name is İsmet Gökay.</p>
-    <p>I am 21 years old. I am from Istanbul, but I live in Ankara since I study at Ankara Yıldırım Beyazıt University.</p>
-    <p>I am a 3rd-year Computer Engineering student.</p>
-    <p>I completed my primary, middle, and high school education in Istanbul.</p>
+
+    <div class="container">
+        <header>
+            <img src="foto.jpg" alt="Ismet Gökay" class="profile-img">
+
+            <h1>İsmet Gökay</h1>
+            <p class="title">Computer Engineering Student</p>
+            
+            <div class="social-links">
+                <a href="mailto:ismetgok2003@gmail.com" target="_blank">Email</a>
+                <a href="https://linkedin.com/in/ismet-gökay-b08168314" target="_blank">LinkedIn</a>
+                <a href="https://github.com/IGoky13" target="_blank">GitHub</a>
+            </div>
+
+            <a href="CV.pdf" class="btn" download>Download Resume (PDF)</a>
+        </header>
+
+        <section>
+            <h2>About Me</h2>
+            <p style="color: #cbd5e1;">
+                Fourth-year Computer Engineering student at Ankara Yıldırım Beyazıt University with a strong foundation in software development and a focus on Object Oriented Programming and Machine Learning. Experienced in developing real-world applications such as Mobile ADAS and Traffic Sign Recognition using YOLO. Proficient in Python, C++, and Java, with a solid understanding of data analysis and object-oriented programming. Passionate about building innovative technology solutions and continuous learning.
+            </p>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <div class="project-title">OTT Viewer Retention & Drop-off Analysis</div>
+                    <span class="project-date">Jan 2026 -- Feb 2026</span>
+                    <span class="tech-stack">Python, Scikit-learn, XGBoost, Pandas</span>
+                    <ul class="project-desc">
+                        <li>Developed a machine learning pipeline to predict viewer drop-off and retention risks.</li>
+                        <li>Compared 8+ algorithms, achieving optimal performance with XGBoost.</li>
+                        <li>Implemented Class Weighting and Threshold Tuning for imbalanced data.</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Mobile ADAS System</div>
+                    <span class="project-date">Oct 2025 -- Present</span>
+                    <span class="tech-stack">Python, YOLOv8, Computer Vision</span>
+                    <ul class="project-desc">
+                        <li>Trained a real-time Traffic Sign Recognition (TSR) model utilizing YOLOv8.</li>
+                        <li>Developed optimized driver alert mechanisms for mobile devices.</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Arcane Brawler (2D Game)</div>
+                    <span class="project-date">Nov 2025 -- Dec 2025</span>
+                    <span class="tech-stack">Unity, C#, OOP</span>
+                    <ul class="project-desc">
+                        <li>Designed a 2D action game with dynamic combat and physics.</li>
+                        <li>Implemented enemy AI behaviors using Finite State Machines.</li>
+                        <li>Utilized OOP principles for modular player mechanics.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">XGBoost</span>
+                <span class="skill-tag">YOLOv8</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">Unity</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Pandas</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="item-row">
+                <div>
+                    <div class="item-title">Ankara Yıldırım Beyazıt University</div>
+                    <div class="item-subtitle">B.S. in Computer Engineering</div>
+                </div>
+                <div class="item-date">Oct 2021 -- Present</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <div class="item-row">
+                <div class="item-title">Algoritma ve Veri Yapıları İleri Seviye</div>
+                <div class="item-date">BTK Akademi, 2025</div>
+            </div>
+            <div class="item-row">
+                <div class="item-title">Uygulamalarla Nesne Yönelimli Programlama</div>
+                <div class="item-date">BTK Akademi, 2025</div>
+            </div>
+            <div class="item-row">
+                <div class="item-title">Python / C / Java Programlama Dili</div>
+                <div class="item-date">BTK Akademi, 2025</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Ismet Gökay. Built with Code.</p>
+        </footer>
+    </div>
+
 </body>
 </html>
