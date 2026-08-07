@@ -1,345 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ismet Gökay | Portfolio</title>
-    <style>
-        /* --- TEMEL AYARLAR --- */
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8; /* Açık Mavi */
-            --accent-hover: #0ea5e9;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İsmet Gökay — Computer Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:            #0a2036;
+    --bg-panel:      #0d2942;
+    --grid-line:     rgba(190,215,240,0.07);
+    --grid-line-strong: rgba(190,215,240,0.14);
+    --ink:           #eef4fb;
+    --ink-dim:       #93aec9;
+    --ink-dimmer:    #5f7a97;
+    --accent:        #f2a541;
+    --accent-soft:   rgba(242,165,65,0.14);
+    --line:          #f2a541;
+    --cyan:          #6fd8d0;
+    --border:        rgba(190,215,240,0.16);
+    --font-display:  'Space Grotesk', sans-serif;
+    --font-body:     'Inter', sans-serif;
+    --font-mono:     'JetBrains Mono', monospace;
+  }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  *{ margin:0; padding:0; box-sizing:border-box; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 50px;
-        }
+  html{ scroll-behavior:smooth; }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 32px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 32px),
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.65;
+    padding-bottom: 60px;
+  }
 
-        /* --- CONTAINER --- */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+  a{ color: inherit; text-decoration:none; }
+  ul{ list-style:none; }
 
-        /* --- HEADER / HERO --- */
-        header {
-            text-align: center;
-            padding: 60px 0 40px; /* Üst boşluk biraz azaltıldı */
-        }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 
-       
-        /* YENİ STİL: YUVARLATILMIŞ KARE */
-        .profile-img {
-            width: 170px;            /* Biraz daha büyüttük */
-            height: auto;            /* Yüksekliği otomatiğe aldık, fotoğraf sündürülmez */
-            max-height: 220px;       /* Çok uzun fotoğraflar için sınır */
-            object-fit: contain;     /* Fotoğrafın tamamını kutuya sığdırır */
-            border-radius: 12px;     /* Hafif yuvarlatılmış köşeler (Kare için bunu 0 yap) */
-            border: 3px solid var(--accent); /* Çerçeve biraz inceltildi */
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
+  .container{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-        .title {
-            color: var(--accent);
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
+  /* ---------- sheet label (signature numbering, mimics drawing-sheet convention) ---------- */
+  .sheet-label{
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .sheet-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: repeating-linear-gradient(90deg, var(--border) 0 6px, transparent 6px 12px);
+  }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
+  /* ---------- header ---------- */
+  header{
+    padding: 64px 0 40px;
+  }
 
-        .social-links a {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            border: 1px solid var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 20px;
-        }
+  .masthead{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: start;
+    border: 1px solid var(--border);
+    background: var(--bg-panel);
+    padding: 28px;
+    position: relative;
+  }
+  .masthead::before, .masthead::after,
+  .titleblock::before, .titleblock::after{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border: 2px solid var(--accent);
+  }
+  .masthead::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .masthead::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
 
-        .social-links a:hover {
-            color: var(--bg-color);
-            background-color: var(--accent);
-            border-color: var(--accent);
-        }
+  .photo-frame{
+    width: 128px;
+    height: 128px;
+    border: 1px solid var(--border);
+    padding: 6px;
+    background: var(--bg);
+  }
+  .photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
+    filter: saturate(0.92) contrast(1.03);
+  }
 
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--bg-color);
-            padding: 10px 24px;
-            border-radius: 6px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .btn:hover { background-color: var(--accent-hover); }
+  h1{
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5vw, 2.9rem);
+    letter-spacing: -0.02em;
+    line-height:1.05;
+  }
 
-        /* --- SECTIONS --- */
-        section { margin: 60px 0; }
+  .role{
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
 
-        h2 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--card-bg);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            color: var(--text-main);
-        }
+  .role span{ color: var(--ink-dimmer); }
 
-        /* --- PROJECTS --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
+  /* title block: signature element, styled like an engineering-drawing info box */
+  .titleblock{
+    margin-top: 22px;
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+  }
+  .titleblock::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .titleblock::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+  .tb-cell{
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    padding: 9px 12px;
+  }
+  .tb-cell:nth-child(4n){ border-right:none; }
+  .tb-cell:nth-child(-n+4){ border-top:none; }
+  .tb-label{
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-dimmer);
+    text-transform: uppercase;
+  }
+  .tb-value{
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink);
+    margin-top: 3px;
+  }
 
-        .project-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            transition: transform 0.2s, border-color 0.2s;
-        }
+  .links-row{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .pill{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    border: 1px solid var(--border);
+    color: var(--ink-dim);
+    padding: 7px 14px;
+    transition: 0.2s;
+  }
+  .pill:hover{ border-color: var(--accent); color: var(--accent); }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
+  .btn{
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 10px 18px;
+    font-weight: 600;
+    margin-top: 22px;
+    letter-spacing: 0.02em;
+    transition: 0.2s;
+  }
+  .btn:hover{ background: #ffbc63; }
 
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: var(--accent);
-        }
+  /* ---------- sections ---------- */
+  section{ margin: 56px 0; }
 
-        .project-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            display: block;
-        }
+  h2{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
 
-        .tech-stack {
-            font-size: 0.9rem;
-            font-family: monospace;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            display: block;
-        }
+  p.lede{ color: var(--ink-dim); max-width: 66ch; }
 
-        .project-desc li {
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 15px;
-            color: #cbd5e1;
-        }
+  /* ---------- experience / education rows ---------- */
+  .entry{
+    border-left: 2px solid var(--border);
+    padding: 4px 0 4px 20px;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .entry::before{
+    content:"";
+    position:absolute;
+    left:-5px; top:8px;
+    width:8px; height:8px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .entry-head{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    align-items: baseline;
+  }
+  .entry-title{ font-weight:600; font-size:1.02rem; }
+  .entry-org{ color: var(--ink-dim); font-size:0.92rem; }
+  .entry-date{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .entry-stack{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-dimmer);
+    margin-top: 6px;
+    display:block;
+  }
+  .entry ul{ margin-top: 12px; }
+  .entry li{
+    font-size: 0.94rem;
+    color: #c9d8ea;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 7px;
+  }
+  .entry li::before{
+    content:">";
+    position:absolute;
+    left:0;
+    color: var(--accent);
+    font-family: var(--font-mono);
+  }
 
-        .project-desc li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
+  /* ---------- project grid ---------- */
+  .project-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .project-card{
+    border: 1px solid var(--border);
+    background: var(--bg-panel);
+    padding: 20px;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .project-card::before, .project-card::after{
+    content:"";
+    position:absolute;
+    width:10px; height:10px;
+    border: 2px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .project-card::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .project-card::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+  .project-card:hover{ transform: translateY(-3px); border-color: var(--accent); }
+  .project-card:hover::before, .project-card:hover::after{ border-color: var(--accent); }
 
-        /* --- SKILLS --- */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+  .project-title{ font-weight:600; font-size:1.02rem; margin-bottom:4px; }
+  .project-date{
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    display:block;
+    margin-bottom: 8px;
+  }
+  .tech-stack{
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--ink-dimmer);
+    display:block;
+    margin-bottom: 14px;
+  }
+  .project-desc li{
+    font-size: 0.9rem;
+    margin-bottom: 7px;
+    padding-left: 14px;
+    position: relative;
+    color: #c9d8ea;
+  }
+  .project-desc li::before{
+    content:"•";
+    position:absolute; left:0;
+    color: var(--accent);
+  }
 
-        .skill-tag {
-            background-color: var(--card-bg);
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            border: 1px solid #334155;
-        }
+  /* ---------- skills ---------- */
+  .skill-group{ margin-bottom: 18px; }
+  .skill-group-label{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-dimmer);
+    margin-bottom: 10px;
+    display:block;
+  }
+  .skills-grid{ display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-tag{
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    border: 1px solid var(--border);
+    padding: 7px 12px;
+    color: var(--ink);
+    background: var(--bg-panel);
+  }
 
-        /* --- EDUCATION & CERTIFICATES --- */
-        .item-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 15px;
-        }
-        .item-row:last-child { border-bottom: none; }
-        
-        .item-title { font-weight: bold; font-size: 1.1rem; }
-        .item-subtitle { color: var(--text-muted); }
-        .item-date { color: var(--accent); font-size: 0.9rem; text-align: right; }
+  /* ---------- certifications ---------- */
+  .cert-row{
+    display:flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--grid-line-strong);
+    font-size: 0.92rem;
+  }
+  .cert-row:last-child{ border-bottom:none; }
+  .cert-issuer{ color: var(--ink-dimmer); font-size: 0.85rem; }
+  .cert-date{
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
 
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 80px;
-        }
+  /* ---------- footer / revision block ---------- */
+  footer{
+    margin-top: 80px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-dimmer);
+    letter-spacing: 0.04em;
+  }
 
-        /* MOBILE RESPONSIVE */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .item-row { flex-direction: column; }
-            .item-date { text-align: left; margin-top: 5px; }
-        }
-    </style>
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .project-card{ transition:none; }
+  }
+
+  @media (max-width: 620px){
+    .masthead{ grid-template-columns: 1fr; text-align:left; }
+    .titleblock{ grid-template-columns: repeat(2, 1fr); }
+    .tb-cell:nth-child(2n){ border-right:none; }
+    .tb-cell:nth-child(-n+2){ border-top:none; }
+    .tb-cell:nth-child(3), .tb-cell:nth-child(4){ border-top:1px solid var(--border); }
+    .entry-head{ flex-direction:column; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <img src="foto.jpg" alt="Ismet Gökay" class="profile-img">
+  <div class="container">
 
-            <h1>İsmet Gökay</h1>
-            <p class="title">Computer Engineering Student</p>
-            
-            <div class="social-links">
-                <a href="mailto:ismetgok2003@gmail.com" target="_blank">Email</a>
-                <a href="https://linkedin.com/in/ismet-gökay-b08168314" target="_blank">LinkedIn</a>
-                <a href="https://github.com/IGoky13" target="_blank">GitHub</a>
+    <header>
+      <div class="masthead">
+        <div class="photo-frame">
+          <img src="foto.jpg" alt="İsmet Gökay">
+        </div>
+        <div>
+          <h1>İsmet Gökay</h1>
+          <p class="role">Computer Engineering Student <span>— Networks · Machine Learning · Software</span></p>
+
+          <div class="titleblock">
+            <div class="tb-cell">
+              <div class="tb-label">Based in</div>
+              <div class="tb-value">Ankara, TR</div>
             </div>
-
-            <a href="Cvup.pdf" class="btn" download>Download Resume (PDF)</a>
-        </header>
-
-        <section>
-            <h2>About Me</h2>
-            <p style="color: #cbd5e1;">
-                Fourth-year Computer Engineering student at Ankara Yıldırım Beyazıt University with a strong foundation in software development and a focus on Object Oriented Programming and Machine Learning. Experienced in developing real-world applications such as Mobile ADAS, Traffic Sign Recognition, and Vehicle Detection using YOLO26n. Proficient in Python, C++, and Java, with a solid understanding of data analysis and object-oriented programming. Passionate about building innovative technology solutions and continuous learning.
-            </p>
-        </section>
-
-        <section>
-            <h2>Projects</h2>
-            <div class="project-grid">
-                
-                <div class="project-card">
-                    <div class="project-title">Istanbul Earthquake Assembly Area & Risk Analysis</div>
-                    <span class="project-date">May 2026</span>
-                    <span class="tech-stack">Python, K-Means, DBSCAN, Folium</span>
-                    <ul class="project-desc">
-                        <li>Analyzed and clustered earthquake assembly areas and seismic risk zones using K-Means and DBSCAN.</li>
-                        <li>Evaluated model performance utilizing SSE and Silhouette coefficients.</li>
-                        <li>Developed interactive geographical risk maps using Folium.</li>
-                    </ul>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-title">OTT Viewer Retention & Drop-off Analysis</div>
-                    <span class="project-date">Jan 2026 -- Feb 2026</span>
-                    <span class="tech-stack">Python, Scikit-learn, XGBoost, Pandas</span>
-                    <ul class="project-desc">
-                        <li>Developed a machine learning pipeline to predict viewer drop-off and retention risks.</li>
-                        <li>Compared 8+ algorithms, achieving optimal performance with XGBoost.</li>
-                        <li>Implemented Class Weighting and Threshold Tuning for imbalanced data.</li>
-                    </ul>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-title">Mobile ADAS System</div>
-                    <span class="project-date">Oct 2025 -- May 2026</span>
-                    <span class="tech-stack">Python, YOLO26n, Machine Learning</span>
-                    <ul class="project-desc">
-                        <li>Trained a single unified real-time YOLO26n model for simultaneous TSR and Vehicle Detection.</li>
-                        <li>Developed optimized driver alert mechanisms for mobile devices.</li>
-                    </ul>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-title">Arcane Brawler (2D Game)</div>
-                    <span class="project-date">Nov 2025 -- Dec 2025</span>
-                    <span class="tech-stack">Unity, C#, OOP</span>
-                    <ul class="project-desc">
-                        <li>Designed a 2D action game with dynamic combat and physics.</li>
-                        <li>Implemented enemy AI behaviors using Finite State Machines.</li>
-                        <li>Utilized OOP principles for modular player mechanics.</li>
-                    </ul>
-                </div>
-
+            <div class="tb-cell">
+              <div class="tb-label">Status</div>
+              <div class="tb-value">4th-year student</div>
             </div>
-        </section>
+            <div class="tb-cell">
+              <div class="tb-label">Graduating</div>
+              <div class="tb-value">Sep 2026</div>
+            </div>
+            <div class="tb-cell">
+              <div class="tb-label">Focus</div>
+              <div class="tb-value">OOP · ML</div>
+            </div>
+          </div>
 
-        <section>
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">C++</span>
-                <span class="skill-tag">C#</span>
-                <span class="skill-tag">XGBoost</span>
-                <span class="skill-tag">YOLO26n</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">Scikit-learn</span>
-                <span class="skill-tag">Unity</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Pandas</span>
-            </div>
-        </section>
+          <div class="links-row">
+            <a class="pill" href="mailto:ismetgok2003@gmail.com">Email</a>
+            <a class="pill" href="https://linkedin.com/in/ismet-gökay-b08168314" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="pill" href="https://github.com/IGoky13" target="_blank" rel="noopener">GitHub</a>
+          </div>
 
-        <section>
-            <h2>Education</h2>
-            <div class="item-row">
-                <div>
-                    <div class="item-title">Ankara Yıldırım Beyazıt University</div>
-                    <div class="item-subtitle">B.S. in Computer Engineering</div>
-                </div>
-                <div class="item-date">Oct 2021 -- Present</div>
-            </div>
-        </section>
+          <a href="Cvup.pdf" class="btn" download>Download Resume — PDF</a>
+        </div>
+      </div>
+    </header>
 
-        <section>
-            <h2>Certifications</h2>
-            <div class="item-row">
-                <div class="item-title">Algoritma ve Veri Yapıları İleri Seviye</div>
-                <div class="item-date">BTK Akademi, 2025</div>
-            </div>
-            <div class="item-row">
-                <div class="item-title">Uygulamalarla Nesne Yönelimli Programlama</div>
-                <div class="item-date">BTK Akademi, 2025</div>
-            </div>
-            <div class="item-row">
-                <div class="item-title">Python / C / Java Programlama Dili</div>
-                <div class="item-date">BTK Akademi, 2025</div>
-            </div>
-        </section>
+    <section id="about">
+      <p class="sheet-label">Sheet 01 — About</p>
+      <p class="lede">
+        Fourth-year Computer Engineering student at Ankara Yıldırım Beyazıt University with a strong foundation in
+        software development and a focus on Object-Oriented Programming and Machine Learning. Experienced in
+        building real-world systems such as Mobile ADAS, Traffic Sign Recognition, and Vehicle Detection using YOLO.
+        Proficient in Python, C++, and Java, with a solid grounding in data analysis and object-oriented design.
+      </p>
+    </section>
 
-        <footer>
-            <p>© 2026 Ismet Gökay. Built with Code.</p>
-        </footer>
-    </div>
+    <section id="experience">
+      <p class="sheet-label">Sheet 02 — Experience</p>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <div class="entry-title">Summer Intern — Directorate of Information Technologies</div>
+            <div class="entry-org">Selçuk University, Konya, Turkey</div>
+          </div>
+          <div class="entry-date">Jul 2026 – Aug 2026 · 1 month</div>
+        </div>
+        <span class="entry-stack">Network Administration · ASP.NET Core MVC · Entity Framework Core · C#</span>
+        <ul>
+          <li>Configured and secured a managed network switch, including VLAN segmentation, DHCP Snooping, and Port Security.</li>
+          <li>Developed a web-based Library Management System and Blog Platform using ASP.NET Core MVC and Entity Framework Core.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="sheet-label">Sheet 03 — Projects</p>
+      <div class="project-grid">
+
+        <div class="project-card">
+          <div class="project-title">Istanbul Earthquake Assembly Area &amp; Risk Analysis</div>
+          <span class="project-date">May 2026</span>
+          <span class="tech-stack">Python · Scikit-learn · K-Means · DBSCAN · Folium</span>
+          <ul class="project-desc">
+            <li>Clustered earthquake assembly areas and risk zones using K-Means and DBSCAN.</li>
+            <li>Optimized cluster configurations via SSE and Silhouette coefficient evaluation.</li>
+            <li>Built interactive risk maps with Folium to visualize assembly locations.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title">OTT Viewer Retention &amp; Drop-off Analysis</div>
+          <span class="project-date">Jan 2026 – Feb 2026</span>
+          <span class="tech-stack">Python · Scikit-learn · XGBoost · Pandas</span>
+          <ul class="project-desc">
+            <li>Built an ML pipeline to predict viewer drop-off risk (Low / Medium / High).</li>
+            <li>Compared 8+ algorithms, achieving best performance with XGBoost.</li>
+            <li>Applied Class Weighting and Threshold Tuning to handle imbalanced data.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title">Mobile ADAS System</div>
+          <span class="project-date">Oct 2025 – May 2026</span>
+          <span class="tech-stack">Python · YOLO26n · Machine Learning</span>
+          <ul class="project-desc">
+            <li>Trained a unified real-time YOLO26n model for Traffic Sign Recognition and Vehicle Detection.</li>
+            <li>Built optimized driver alert mechanisms for mobile deployment.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <p class="sheet-label">Sheet 04 — Technical Skills</p>
+
+      <div class="skill-group">
+        <span class="skill-group-label">Programming Languages</span>
+        <div class="skills-grid">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">C#</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <span class="skill-group-label">Machine Learning</span>
+        <div class="skills-grid">
+          <span class="skill-tag">YOLO</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">Matplotlib</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <span class="skill-group-label">Frameworks &amp; Tools</span>
+        <div class="skills-grid">
+          <span class="skill-tag">ASP.NET Core MVC</span>
+          <span class="skill-tag">Unity</span>
+          <span class="skill-tag">Git / GitHub</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <span class="skill-group-label">Web Technologies</span>
+        <div class="skills-grid">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <p class="sheet-label">Sheet 05 — Education</p>
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <div class="entry-title">Ankara Yıldırım Beyazıt University</div>
+            <div class="entry-org">B.S. in Computer Engineering</div>
+          </div>
+          <div class="entry-date">Oct 2021 – Sep 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <p class="sheet-label">Sheet 06 — Certifications</p>
+      <div class="cert-row">
+        <div>
+          <div>Algoritma ve Veri Yapıları İleri Seviye</div>
+          <div class="cert-issuer">BTK Akademi</div>
+        </div>
+        <div class="cert-date">2025</div>
+      </div>
+      <div class="cert-row">
+        <div>
+          <div>Uygulamalarla Nesne Yönelimli Programlama</div>
+          <div class="cert-issuer">BTK Akademi</div>
+        </div>
+        <div class="cert-date">2025</div>
+      </div>
+      <div class="cert-row">
+        <div>
+          <div>JAVA ile Programlamaya Giriş</div>
+          <div class="cert-issuer">BTK Akademi</div>
+        </div>
+        <div class="cert-date">2025</div>
+      </div>
+      <div class="cert-row">
+        <div>
+          <div>Python Programlama Dili</div>
+          <div class="cert-issuer">BTK Akademi</div>
+        </div>
+        <div class="cert-date">2025</div>
+      </div>
+      <div class="cert-row">
+        <div>
+          <div>C Programlama Dili</div>
+          <div class="cert-issuer">BTK Akademi</div>
+        </div>
+        <div class="cert-date">2025</div>
+      </div>
+    </section>
+
+    <footer>
+      <span>İsmet Gökay — Computer Engineering Portfolio</span>
+      <span>Rev. 2026</span>
+    </footer>
+
+  </div>
 
 </body>
 </html>
